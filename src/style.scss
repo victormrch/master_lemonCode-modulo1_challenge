@@ -1,9 +1,8 @@
-$back_color: #141414;
-$font_color: rgb(235, 235, 235);
-$top_lg: "5";
-$top_sm: "3";
-
-@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
+$principal_color: #f44336;
+$background_color: #141414;
+$text_color: #ffffff;
+$top_number_img_lg: "5";
+$top_number_img_sm: "3";
 
 @font-face {
   font-family: "Netflix Sans";
@@ -16,7 +15,7 @@ $top_sm: "3";
 }
 
 @mixin Tablet {
-  @media (max-width: 1279px) {
+  @media (max-width: 1280px) {
     @content;
   }
 }
@@ -28,9 +27,9 @@ $top_sm: "3";
 }
 
 body {
-  background-color: $back_color;
-  color: $font_color;
-  font-family: "Netflix Sans";
+  background-color: $background_color;
+  color: $text_color;
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-top: 0px;
 
   img {
@@ -48,7 +47,7 @@ header {
   padding: 1em;
   position: sticky;
   top: 0px;
-  background-color: $back_color;
+  background-color: $background_color;
 
   .header-logo {
     display: flex;
@@ -83,7 +82,8 @@ header {
       &:hover {
         transition: ease 0.4s;
         cursor: pointer;
-        color: rgb(179, 179, 179);
+        color: $text_color;
+        background-color: $principal_color;
       }
     }
   }
@@ -91,6 +91,7 @@ header {
 
 .top {
   display: flex;
+  justify-content: center;
 
   @include Mobile-Tablet {
     flex-direction: column;
@@ -127,7 +128,7 @@ header {
     &:hover {
       transition: ease-in 0.2s;
       transform: scale(1.1);
-      box-shadow: 0px 0px 10px $back_color;
+      box-shadow: 0px 0px 10px $background_color;
     }
 
     @include Mobile-Tablet {
@@ -149,19 +150,16 @@ header {
 }
 
 #top-text::after {
-  content: $top_lg;
+  content: $top_number_img_lg;
 
   @include Tablet {
-    content: $top_sm;
+    content: $top_number_img_sm;
   }
 }
 
 .top {
   @include Tablet {
-    & > :nth-child(4) {
-      display: none;
-    }
-    & > :nth-child(5) {
+    & > :nth-child(n + 4) {
       display: none;
     }
   }
@@ -177,5 +175,5 @@ header {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #f44336;
+  background-color: $principal_color;
 }
